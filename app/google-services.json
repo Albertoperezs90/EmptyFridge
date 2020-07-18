@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "613581700072",
+    "firebase_url": "https://emptyfridge-12a52.firebaseio.com",
+    "project_id": "emptyfridge-12a52",
+    "storage_bucket": "emptyfridge-12a52.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613581700072:android:8b3be1254006f97d36825d",
+        "android_client_info": {
+          "package_name": "com.aperezsi.emptyfridge"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613581700072-pvosfth03k2juaatkubp12s28mhffnan.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFDovbnbn45GkUA6LwXKYZpOBjYeekryk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "613581700072-pvosfth03k2juaatkubp12s28mhffnan.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:613581700072:android:88c0f66baca52bb136825d",
+        "android_client_info": {
+          "package_name": "com.aperezsi.emptyfridge.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "613581700072-pvosfth03k2juaatkubp12s28mhffnan.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFDovbnbn45GkUA6LwXKYZpOBjYeekryk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "613581700072-pvosfth03k2juaatkubp12s28mhffnan.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
