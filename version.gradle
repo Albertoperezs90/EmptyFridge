@@ -1,5 +1,9 @@
 apply from: "android.gradle"
 
+/********
+ Methods
+ ********/
+
 def getVersionName = { ->
     return ext.versionName
 }
@@ -12,7 +16,9 @@ def getVersionNameMap = { ->
 
 def incrementMajorVersion = { ->
     String[] currentMap = getVersionNameMap()
-    currentMap[0] = String(Integer.parseInt(currentMap[0])++)
+    int majorVersion = Integer.parseInt(currentMap[0])
+    majorVersion++
+    currentMap[0] = String.valueOf(majorVersion)
     currentMap[1] = "0"
     currentMap[2] = "0"
     return currentMap
@@ -20,7 +26,9 @@ def incrementMajorVersion = { ->
 
 def incrementFeatureVersion = { ->
     String[] currentMap = getVersionNameMap()
-    currentMap[1] = String(Integer.parseInt(currentMap[1])++)
+    int featureVersion = Integer.parseInt(currentMap[1])
+    featureVersion++
+    currentMap[1] = String.valueOf(featureVersion)
     currentMap[2] = "0"
     return currentMap
 }
@@ -51,6 +59,16 @@ def overrideVersionName(versions ) {
         println("No se ha encontrado android.gradle")
     } finally {
         if (writer != null) writer.close()
+    }
+}
+
+/********
+    Tasks
+ ********/
+
+task printVersionName {
+    doLast {
+        println getVersionName()
     }
 }
 
