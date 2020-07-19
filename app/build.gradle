@@ -1,6 +1,7 @@
 apply plugin: "com.android.application"
 apply plugin: "kotlin-android"
 apply plugin: "kotlin-android-extensions"
+apply plugin: "com.google.gms.google-services"
 apply plugin: "com.google.firebase.crashlytics"
 
 android {
@@ -16,13 +17,26 @@ android {
     buildTypes {
         debug {
             minifyEnabled false
+            applicationVariants.all { variant ->
+                variant.outputs.all {
+                    outputFileName = applicationId
+                    outputFileName += "-${variant.buildType.name}" + "-v" + android.defaultConfig.versionName + ".apk"
+                }
+            }
         }
 
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    outputFileName = applicationId
+                    outputFileName += "-${variant.buildType.name}" + "-v" + android.defaultConfig.versionName + ".apk"
+                }
+            }
         }
     }
+
 
     flavorDimensions "environment"
 

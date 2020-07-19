@@ -1,0 +1,76 @@
+apply from: "android.gradle"
+
+def getVersionName = { ->
+    return ext.versionName
+}
+
+def getVersionNameMap = { ->
+    String currentVersionName = getVersionName()
+    String[] versionNameMap = currentVersionName.split("\\.")
+    return versionNameMap
+}
+
+def incrementMajorVersion = { ->
+    String[] currentMap = getVersionNameMap()
+    currentMap[0] = String(Integer.parseInt(currentMap[0])++)
+    currentMap[1] = "0"
+    currentMap[2] = "0"
+    return currentMap
+}
+
+def incrementFeatureVersion = { ->
+    String[] currentMap = getVersionNameMap()
+    currentMap[1] = String(Integer.parseInt(currentMap[1])++)
+    currentMap[2] = "0"
+    return currentMap
+}
+
+def incrementFixVersion = { ->
+    String[] currentMap = getVersionNameMap()
+    int fixVersion = Integer.parseInt(currentMap[2])
+    fixVersion++
+    currentMap[2] = String.valueOf(fixVersion)
+    return currentMap
+}
+
+def overrideVersionName(versions ) {
+    String[] versionMap = (String[]) versions
+    File androidGradle = new File("android.gradle")
+    StringBuilder androidGradleContent = new StringBuilder(androidGradle.text)
+    String majorVersion = versionMap[0]
+    String featureVersion = versionMap[1]
+    String fixVersion = versionMap[2]
+    int startIndex = androidGradleContent.indexOf("versionName")
+    int endIndex = startIndex + 20
+    String newAndroidGradleContent = androidGradleContent.replace(startIndex, endIndex, "versionName = \"${majorVersion}.${featureVersion}.${fixVersion}")
+    BufferedWriter writer
+    try {
+        writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("android.gradle")))
+        writer.write(newAndroidGradleContent)
+    } catch (FileNotFoundException e) {
+        println("No se ha encontrado android.gradle")
+    } finally {
+        if (writer != null) writer.close()
+    }
+}
+
+task bumpMajorVersion {
+    doLast {
+        String[] incrementMajorVersionMap = incrementMajorVersion()
+        overrideVersionName(incrementMajorVersionMap)
+    }
+}
+
+task bumpFeatureVersion {
+    doLast {
+        String[] incrementFeatureVersionMap = incrementFeatureVersion()
+        overrideVersionName(incrementFeatureVersionMap)
+    }
+}
+
+task bumpFixVersion {
+    doLast {
+        String[] incrementFixVersionMap = incrementFixVersion()
+        overrideVersionName(incrementFixVersionMap)
+    }
+}

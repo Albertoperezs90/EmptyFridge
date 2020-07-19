@@ -1,0 +1,27 @@
+default_platform(:android)
+
+platform :android do
+
+  desc "Runs all the unit tests"
+  lane :unit_tests do
+    gradle(task: "test")
+  end
+  
+  desc "Building Develop environment"
+  lane :assemble_dev
+    gradle(
+        task: "assemble",
+        flavor: "dev",
+        build_type: "Release",
+    )
+  end
+  
+  desc "Uploading developing environment to Firebase App Distribution"
+  lane :dev_firebase_app_distribution
+    firebase_app_distribution(
+        app: "1:613581700072:android:88c0f66baca52bb136825d",
+        apk_path: "app/build/outputs/apk/dev/release/
+        groups: "develop-team"
+    )
+  end
+end
