@@ -44,7 +44,7 @@ platform :android do
   
   desc "Uploading developing environment to Firebase App Distribution"
   lane :dev_firebase_app_distribution do
-    version_name = gradle(task: "printVersionName", flags: "-q")
+    version_name = gradle(task: "printVersionName", flags: "-q").gsub(/\s+/, "")
     firebase_app_distribution(
         app: "1:613581700072:android:88c0f66baca52bb136825d",
         apk_path: "app/build/outputs/apk/dev/release/com.aperezsi.emptyfridge.dev-release-v#{version_name}.apk",
@@ -54,7 +54,7 @@ platform :android do
   
   desc "Uploading production environment to Firebase App Distribution"
   lane :pro_firebase_app_distribution do
-    version_name = gradle(task: "printVersionName", flags: "-q")
+    version_name = gradle(task: "printVersionName", flags: "-q").gsub(/\s+/, "")
     firebase_app_distribution(
         app: "1:613581700072:android:8b3be1254006f97d36825d",
         apk_path: "app/build/outputs/apk/pro/release/com.aperezsi.emptyfridge.pro-release-v#{version_name}.apk",
@@ -74,5 +74,10 @@ platform :android do
         force: true,
         no_verify: true
     )
+  end
+  
+  lane :prueba do
+    version_name = gradle(task: "printVersionName", flags: "-q").gsub(/\s+/, "")
+    puts "Version is #{version_name}"
   end
 end
