@@ -12,19 +12,16 @@ platform :android do
   desc "Increment major version"
   lane :increment_major_version do
     gradle(task: "bumpMajorVersion")
-    version = gradle(task: "printVersionName")
   end
   
   desc "Increment feature version"
   lane :increment_feature_version do
     gradle(task: "bumpFeatureVersion")
-    version = gradle(task: "printVersionName")
   end
   
   desc "Increment fix version"
   lane :increment_fix_version do
     gradle(task: "bumpFixVersion")
-    version = gradle(task: "printVersionName")
   end
   
   desc "Building Develop environment"
@@ -47,9 +44,10 @@ platform :android do
   
   desc "Uploading developing environment to Firebase App Distribution"
   lane :dev_firebase_app_distribution do
+    version_name = gradle(task: "printVersionName")
     firebase_app_distribution(
         app: "1:613581700072:android:88c0f66baca52bb136825d",
-        apk_path: "app/build/outputs/apk/dev/release/com.aperezsi.emptyfridge.dev-release-v#{versionName}.apk",
+        apk_path: "app/build/outputs/apk/dev/release/com.aperezsi.emptyfridge.dev-release-v#{version_name}.apk",
         groups: "develop-team"
     )
   end
@@ -58,14 +56,15 @@ platform :android do
   lane :pro_firebase_app_distribution do
     firebase_app_distribution(
         app: "1:613581700072:android:8b3be1254006f97d36825d",
-        apk_path: "app/build/outputs/apk/pro/release/com.aperezsi.emptyfridge.pro-release-v#{versionName}.apk",
+        apk_path: "app/build/outputs/apk/pro/release/com.aperezsi.emptyfridge.pro-release-v#{version_name}.apk",
         groups: "develop-team"
     )
   end
   
   desc "Commit Changes"
   lane :commit_changes do
-    git_commit(path: "./android.gradle", message: "Update to version #{versionName}")
+    version_name = gradle(task: "printVersionName")
+    git_commit(path: "./android.gradle", message: "Update to version #{version_name}")
     currentBranch = git_branch
     push_to_git_remote(
         remote: "origin",
