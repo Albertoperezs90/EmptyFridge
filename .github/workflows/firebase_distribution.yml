@@ -16,7 +16,7 @@ jobs:
         key: develop
 
     - name: Set up Ruby
-        uses: actions/setup-ruby@v1
+      uses: actions/setup-ruby@v1
 
     - name: Install Dependencies
       run: gem install bundler && bundle install
