@@ -9,18 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'Update to version')"
 
-    # Set up Ruby and dependencies
     steps:
+    # Checkout develop branch
+    - uses: actions/checkout@v2
+      with:
+        key: develop
+
+    # Set up Ruby and dependencies
     - name: Set up Ruby
       uses: actions/setup-ruby@v1
 
     - name: Install Dependencies
       run: gem install bundler && bundle install
-    
-    # Checkout develop branch
-    - uses: actions/checkout@v2
-      with:
-        key: develop
+
    
    # Runs all unit tests in the application using fastlane
     - name: Run all unit tests
