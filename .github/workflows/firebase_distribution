@@ -1,0 +1,44 @@
+name: Android Firebase App Distribution
+
+on:
+  push:
+    branches: [ develop ]
+
+jobs:
+  distribute:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'Update to version')"
+    
+    # Checkout develop branch
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        key: develop
+   
+   # Runs all unit tests in the application using fastlane
+    - name: Run all unit tests
+      run: fastlane unit_tests
+
+    # Increment fix number version by one
+    - name: Increment fix version
+      run: fastlane increment_fix_version
+      
+    # Assemble dev flavor with buid type Release
+    - name: Assembling Dev flavour Release Build Type
+      run: fastlane assemble_dev
+
+    # Assemble pro flavor with buid type Release
+    - name: Assembling Pro flavour Release Build Type
+      run: fastlane assemble_pro
+    
+    # Distribute with firebase distribution dev flavour apk
+    - name: Distributing dev flavor to firebase
+      run: fastlane dev_firebase_app_distribution
+    
+    # Distribute with firebase distribution pro flavour apk
+    - name: Distributing pro flavor to firebase
+      run: fastlane pro_firebase_app_distribution
+    
+    # Commit and push android.gradle file with version updated
+    - name: Commit changes with new version
+      run: fastlane commit_changes
