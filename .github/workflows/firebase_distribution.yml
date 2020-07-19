@@ -43,13 +43,13 @@ jobs:
     - name: Distributing dev flavor to firebase
       run: fastlane dev_firebase_app_distribution
       env:
-        - FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
     
     # Distribute with firebase distribution pro flavour apk
     - name: Distributing pro flavor to firebase
       run: fastlane pro_firebase_app_distribution
       env:
-        - FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
     
     # Commit and push android.gradle file with version updated
     - name: Commit changes with new version
