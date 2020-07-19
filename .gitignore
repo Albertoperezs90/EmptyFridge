@@ -13,3 +13,5 @@
 .externalNativeBuild
 .cxx
 /fastlane/report.xml
+
+fastlane/README.md

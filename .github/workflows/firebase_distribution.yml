@@ -8,18 +8,19 @@ jobs:
   distribute:
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'Update to version')"
+
+    # Set up Ruby and dependencies for fastlane
+    - name: Set up Ruby
+      uses: actions/setup-ruby@v1
+
+    - name: Install Dependencies
+      run: gem install bundler && bundle install
     
     # Checkout develop branch
     steps:
     - uses: actions/checkout@v2
       with:
         key: develop
-
-    - name: Set up Ruby
-      uses: actions/setup-ruby@v1
-
-    - name: Install Dependencies
-      run: gem install bundler && bundle install
    
    # Runs all unit tests in the application using fastlane
     - name: Run all unit tests
@@ -28,7 +29,7 @@ jobs:
     # Increment fix number version by one
     - name: Increment fix version
       run: fastlane increment_fix_version
-      
+
     # Assemble dev flavor with buid type Release
     - name: Assembling Dev flavour Release Build Type
       run: fastlane assemble_dev
