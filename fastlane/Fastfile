@@ -65,7 +65,7 @@ platform :android do
   
   desc "Commit Changes"
   lane :commit_changes do
-    git_commit(path: "./version.gradle", message: "Update to version #{versionName}")
+    git_commit(path: "./android.gradle", message: "Update to version #{versionName}")
     currentBranch = git_branch
     push_to_git_remote(
         remote: "origin",
