@@ -2,26 +2,77 @@ default_platform(:android)
 
 platform :android do
 
+  versionName = nil
+
   desc "Runs all the unit tests"
   lane :unit_tests do
     gradle(task: "test")
   end
   
+  desc "Increment major version"
+  lane :increment_major_version do
+    gradle(task: "bumpMajorVersion")
+    version = gradle(task: "getVersionName")
+  end
+  
+  desc "Increment feature version"
+  lane :increment_feature_version do
+    gradle(task: "bumpFeatureVersion")
+    version = gradle(task: "getVersionName")
+  end
+  
+  desc "Increment fix version"
+  lane :increment_fix_version do
+    gradle(task: "bumpFixVersion")
+    version = gradle(task: "getVersionName")
+  end
+  
   desc "Building Develop environment"
-  lane :assemble_dev
+  lane :assemble_dev do
     gradle(
         task: "assemble",
         flavor: "dev",
-        build_type: "Release",
+        build_type: "Release"
+    )
+  end
+  
+  desc "Building Production environment"
+  lane :assemble_pro do
+    gradle(
+        task: "assemble",
+        flavor: "pro",
+        build_type: "Release"
     )
   end
   
   desc "Uploading developing environment to Firebase App Distribution"
-  lane :dev_firebase_app_distribution
+  lane :dev_firebase_app_distribution do
     firebase_app_distribution(
         app: "1:613581700072:android:88c0f66baca52bb136825d",
-        apk_path: "app/build/outputs/apk/dev/release/
+        apk_path: "app/build/outputs/apk/dev/release/com.aperezsi.emptyfridge.dev-release-v#{versionName}.apk",
         groups: "develop-team"
+    )
+  end
+  
+  desc "Uploading production environment to Firebase App Distribution"
+  lane :pro_firebase_app_distribution do
+    firebase_app_distribution(
+        app: "1:613581700072:android:8b3be1254006f97d36825d",
+        apk_path: "app/build/outputs/apk/pro/release/com.aperezsi.emptyfridge.pro-release-v#{versionName}.apk",
+        groups: "develop-team"
+    )
+  end
+  
+  desc "Commit Changes"
+  lane :commit_changes do
+    git_commit(path: "./version.gradle", message: "Update to version #{versionName}")
+    currentBranch = git_branch
+    push_to_git_remote(
+        remote: "origin",
+        local_branch: currentBranch,
+        remote_branch: currentBranch,
+        force: true,
+        no_verify: true
     )
   end
 end

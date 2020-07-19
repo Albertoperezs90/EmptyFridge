@@ -12,25 +12,55 @@ Install _fastlane_ using
 ```
 [sudo] gem install fastlane -NV
 ```
-or alternatively using `brew cask install fastlane`
+or alternatively using `brew install fastlane`
 
 # Available Actions
 ## Android
-### android test
+### android unit_tests
 ```
-fastlane android test
+fastlane android unit_tests
 ```
-Runs all the tests
-### android beta
+Runs all the unit tests
+### android increment_major_version
 ```
-fastlane android beta
+fastlane android increment_major_version
 ```
-Submit a new Beta Build to Crashlytics Beta
-### android deploy
+Increment major version
+### android increment_feature_version
 ```
-fastlane android deploy
+fastlane android increment_feature_version
 ```
-Deploy a new version to the Google Play
+Increment feature version
+### android increment_fix_version
+```
+fastlane android increment_fix_version
+```
+Increment fix version
+### android assemble_dev
+```
+fastlane android assemble_dev
+```
+Building Develop environment
+### android assemble_pro
+```
+fastlane android assemble_pro
+```
+Building Production environment
+### android dev_firebase_app_distribution
+```
+fastlane android dev_firebase_app_distribution
+```
+Uploading developing environment to Firebase App Distribution
+### android pro_firebase_app_distribution
+```
+fastlane android pro_firebase_app_distribution
+```
+Uploading production environment to Firebase App Distribution
+### android commit_changes
+```
+fastlane android commit_changes
+```
+Commit Changes
 
 ----
 
