@@ -57,7 +57,7 @@ platform :android do
     version_name = gradle(task: "printVersionName", flags: "-q").gsub(/\s+/, "")
     firebase_app_distribution(
         app: "1:613581700072:android:8b3be1254006f97d36825d",
-        apk_path: "app/build/outputs/apk/pro/release/com.aperezsi.emptyfridge.pro-release-v#{version_name}.apk",
+        apk_path: "app/build/outputs/apk/pro/release/com.aperezsi.emptyfridge-release-v#{version_name}.apk",
         groups: "develop-team"
     )
   end
