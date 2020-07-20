@@ -28,9 +28,14 @@ jobs:
       
     - name: Install Firebase CLI tools
       run: npm install -g firebase-tools
-
-   
-   # Runs all unit tests in the application using fastlane
+      
+    # Set Git author
+    - name: Set Git Author
+      run: |
+        git config --local user.name "Github Actions CI"
+        git config --local user.email "aperezsimon90@gmail.com"
+    
+    # Runs all unit tests in the application using fastlane
     - name: Run all unit tests
       run: fastlane unit_tests
 

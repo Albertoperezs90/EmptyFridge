@@ -75,9 +75,4 @@ platform :android do
         no_verify: true
     )
   end
-  
-  lane :prueba do
-    version_name = gradle(task: "printVersionName", flags: "-q").gsub(/\s+/, "")
-    puts "Version is #{version_name}"
-  end
 end
