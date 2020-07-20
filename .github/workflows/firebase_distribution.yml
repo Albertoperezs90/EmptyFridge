@@ -18,7 +18,7 @@ jobs:
     - name: Setting Keystore file
       run: |
         echo "${{ secrets.KEYSTORE_FILENAME }}" > release.keystore.asc
-        gpg -d --passphrase "{{ secrets.KEY_PASSWORD }}" --batch release.keystore.asc > app/release.keystore
+        gpg -d --passphrase "{{ secrets.KEYSTORE_FILENAME_PASSHPHRASE }}" --batch release.keystore.asc > app/release.keystore
         
     - uses: actions/setup-node@v1
       with:
