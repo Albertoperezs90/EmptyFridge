@@ -14,6 +14,15 @@ android {
         versionName rootProject.ext.versionName
     }
 
+    signingConfigs {
+        release {
+            keyAlias System.getenv("KEY_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
+            storeFile file("release.keystore")
+            storePassword System.getenv("KEYSTORE_PASSWORD")
+        }
+    }
+
     buildTypes {
         debug {
             minifyEnabled false
@@ -27,6 +36,7 @@ android {
 
         release {
             minifyEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             applicationVariants.all { variant ->
                 variant.outputs.all { output ->

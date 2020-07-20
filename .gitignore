@@ -15,3 +15,11 @@
 /fastlane/report.xml
 
 fastlane/README.md
+
+app/aperezsimon.keystore
+
+*.apk
+
+app/dev/release/output.json
+
+app/pro/release/output.json
