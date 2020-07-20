@@ -6,6 +6,7 @@ ext {
     androidxLifecycleExtensions = "2.0.0"       // https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-extensions
     crashlytics = "2.2.0"                       // https://maven.google.com/web/index.html?#com.google.firebase:firebase-crashlytics-gradle:2.2.0
     junit = "4.12"                              // https://junit.org/junit4/
+    lifecycle = "2.2.0"                         // https://maven.google.com/web/index.html?#androidx.lifecycle
     mockitoKotlin = "2.2.0"                     // https://search.maven.org/artifact/com.nhaarman.mockitokotlin2/mockito-kotlin
 
 
@@ -17,6 +18,8 @@ ext {
             crashlytics                    : "com.google.firebase:firebase-crashlytics-gradle:$crashlytics",
             jUnit                          : "junit:junit:$junit",
             kotlin                         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${ext.kotlinVersion}",
-            mockitoKotlin                  : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin"
+            livedata                       : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle",
+            mockitoKotlin                  : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin",
+            androidViewModel               : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
     ]
 }

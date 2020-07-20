@@ -69,6 +69,8 @@ dependencies {
     implementation libs.androidxConstraintLayout
     implementation libs.androidxAppCompat
     implementation libs.androidxLifecycleExtensions
+    implementation libs.androidViewModel
+    implementation libs.livedata
 
     testImplementation libs.jUnit
     testImplementation libs.mockitoKotlin
