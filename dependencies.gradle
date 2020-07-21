@@ -5,6 +5,7 @@ ext {
     androidxCoreKtx = "1.0.1"                   // https://mvnrepository.com/artifact/androidx.core/core-ktx
     androidxLifecycleExtensions = "2.0.0"       // https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-extensions
     crashlytics = "2.2.0"                       // https://maven.google.com/web/index.html?#com.google.firebase:firebase-crashlytics-gradle:2.2.0
+    daggerHilt = "2.28-alpha"                   // https://mvnrepository.com/artifact/com.google.dagger/hilt-android
     junit = "4.12"                              // https://junit.org/junit4/
     lifecycle = "2.2.0"                         // https://maven.google.com/web/index.html?#androidx.lifecycle
     mockitoKotlin = "2.2.0"                     // https://search.maven.org/artifact/com.nhaarman.mockitokotlin2/mockito-kotlin
@@ -16,6 +17,8 @@ ext {
             androidXCoreKtx                : "androidx.core:core-ktx:$androidxCoreKtx",
             androidxLifecycleExtensions    : "androidx.lifecycle:lifecycle-extensions:$androidxLifecycleExtensions",
             crashlytics                    : "com.google.firebase:firebase-crashlytics-gradle:$crashlytics",
+            daggerHilt                     : "com.google.dagger:hilt-android:$daggerHilt",
+            daggerHiltCompiler             : "com.google.dagger:hilt-android-compiler:$daggerHilt",
             jUnit                          : "junit:junit:$junit",
             kotlin                         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${ext.kotlinVersion}",
             livedata                       : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle",
