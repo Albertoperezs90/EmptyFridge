@@ -11,6 +11,7 @@ ext {
     fragmentKTX = "1.2.5"                       // https://maven.google.com/web/index.html?#androidx.fragment:fragment-ktx
     junit = "4.12"                              // https://junit.org/junit4/
     lifecycle = "2.2.0"                         // https://maven.google.com/web/index.html?#androidx.lifecycle
+    lottie = "3.4.1"                            // https://search.maven.org/artifact/com.airbnb.android/lottie/3.4.1/aar
     mockitoKotlin = "2.2.0"                     // https://search.maven.org/artifact/com.nhaarman.mockitokotlin2/mockito-kotlin
 
 
@@ -28,6 +29,7 @@ ext {
             jUnit                          : "junit:junit:$junit",
             kotlin                         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${ext.kotlinVersion}",
             livedata                       : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle",
+            lottie                         : "com.airbnb.android:lottie:$lottie",
             mockitoKotlin                  : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin",
             androidViewModel               : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
     ]
