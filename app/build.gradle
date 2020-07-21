@@ -3,6 +3,8 @@ apply plugin: "kotlin-android"
 apply plugin: "kotlin-android-extensions"
 apply plugin: "com.google.gms.google-services"
 apply plugin: "com.google.firebase.crashlytics"
+apply plugin: "dagger.hilt.android.plugin"
+apply plugin: "kotlin-kapt"
 
 android {
     compileSdkVersion 29
@@ -47,6 +49,9 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
 
     flavorDimensions "environment"
 
@@ -61,16 +66,26 @@ android {
         }
 
     }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
 }
 
 dependencies {
-    implementation libs.kotlin
+    implementation libs.activityKTX
     implementation libs.androidXCoreKtx
     implementation libs.androidxConstraintLayout
     implementation libs.androidxAppCompat
     implementation libs.androidxLifecycleExtensions
     implementation libs.androidViewModel
+    implementation libs.daggerHilt
+    implementation libs.daggerHiltViewModel
+    implementation libs.fragmentKTX
+    implementation libs.kotlin
     implementation libs.livedata
+
+    kapt libs.daggerHiltCompiler
 
     testImplementation libs.jUnit
     testImplementation libs.mockitoKotlin
