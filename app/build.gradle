@@ -84,7 +84,8 @@ dependencies {
     implementation libs.fragmentKTX
     implementation libs.kotlin
     implementation libs.livedata
-    implementation libs.lottie
+    implementation libs.material
+    implementation libs.recyclerView
 
     kapt libs.daggerHiltCompiler
 

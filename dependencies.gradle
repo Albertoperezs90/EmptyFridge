@@ -11,8 +11,9 @@ ext {
     fragmentKTX = "1.2.5"                       // https://maven.google.com/web/index.html?#androidx.fragment:fragment-ktx
     junit = "4.12"                              // https://junit.org/junit4/
     lifecycle = "2.2.0"                         // https://maven.google.com/web/index.html?#androidx.lifecycle
-    lottie = "3.4.1"                            // https://search.maven.org/artifact/com.airbnb.android/lottie/3.4.1/aar
+    material = "1.1.0"                          // https://maven.google.com/web/index.html?#com.google.android.material:material
     mockitoKotlin = "2.2.0"                     // https://search.maven.org/artifact/com.nhaarman.mockitokotlin2/mockito-kotlin
+    recyclerView = "1.1.0"                      // https://maven.google.com/web/index.html?#androidx.recyclerview:recyclerview
 
 
     libs = [
@@ -21,6 +22,7 @@ ext {
             androidxConstraintLayout       : "androidx.constraintlayout:constraintlayout:$androidxConstraintLayout",
             androidXCoreKtx                : "androidx.core:core-ktx:$androidxCoreKtx",
             androidxLifecycleExtensions    : "androidx.lifecycle:lifecycle-extensions:$androidxLifecycleExtensions",
+            androidViewModel               : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle",
             crashlytics                    : "com.google.firebase:firebase-crashlytics-gradle:$crashlytics",
             daggerHilt                     : "com.google.dagger:hilt-android:$daggerHilt",
             daggerHiltCompiler             : "com.google.dagger:hilt-android-compiler:$daggerHilt",
@@ -29,8 +31,8 @@ ext {
             jUnit                          : "junit:junit:$junit",
             kotlin                         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${ext.kotlinVersion}",
             livedata                       : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle",
-            lottie                         : "com.airbnb.android:lottie:$lottie",
+            material                       : "com.google.android.material:material:$material",
             mockitoKotlin                  : "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlin",
-            androidViewModel               : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
+            recyclerView                   : "androidx.recyclerview:recyclerview:$recyclerView"
     ]
 }

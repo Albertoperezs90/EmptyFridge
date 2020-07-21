@@ -10,6 +10,7 @@ abstract class BaseActivity<T>(private val layoutId: Int) : AppCompatActivity() 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = DataBindingUtil.setContentView<T>(this, layoutId)
+        binding.lifecycleOwner = this
         initialize(binding)
     }
 
