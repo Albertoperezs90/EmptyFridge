@@ -1,14 +1,14 @@
 package com.aperezsi.emptyfridge.domain.usecase
 
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.flow
+import com.aperezsi.emptyfridge.data.remote.implementation.Grocery
+import com.aperezsi.emptyfridge.domain.repository.ShoppingListRepository
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
-class GetShoppingList @Inject constructor() {
+class GetShoppingList @Inject constructor(private val shoppingListRepository: ShoppingListRepository) {
 
-    val example = flow {
-        emit(listOf("berenjena", "fresas", "naranjas"))
-        delay(5000)
-        emit(listOf("colifor", "pescado", "carne"))
+    fun invoke(): Flow<List<Grocery>> {
+        return shoppingListRepository.getShoppingList()
     }
+
 }

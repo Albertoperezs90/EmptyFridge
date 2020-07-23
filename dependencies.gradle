@@ -8,6 +8,9 @@ ext {
     crashlytics = "2.2.0"                       // https://maven.google.com/web/index.html?#com.google.firebase:firebase-crashlytics-gradle:2.2.0
     daggerHilt = "2.28-alpha"                   // https://mvnrepository.com/artifact/com.google.dagger/hilt-android
     daggerHiltViewModel = "1.0.0-alpha01"       // https://maven.google.com/web/index.html?#androidx.hilt:hilt-lifecycle-viewmodel
+    firebaseCore = "17.4.4"                     // https://maven.google.com/web/index.html?q=firebase#com.google.firebase:firebase-core
+    firebaseRealtimeDatabase = "19.3.1"         // https://maven.google.com/web/index.html?q=database#com.google.firebase:firebase-database-ktx
+    firebaseStore = "21.5.0"                    // https://maven.google.com/web/index.html?#com.google.firebase:firebase-firestore:21.5.0
     fragmentKTX = "1.2.5"                       // https://maven.google.com/web/index.html?#androidx.fragment:fragment-ktx
     junit = "4.12"                              // https://junit.org/junit4/
     lifecycle = "2.2.0"                         // https://maven.google.com/web/index.html?#androidx.lifecycle
@@ -28,6 +31,9 @@ ext {
             daggerHiltCompiler             : "com.google.dagger:hilt-android-compiler:$daggerHilt",
             daggerHiltViewModel            : "androidx.hilt:hilt-lifecycle-viewmodel:$daggerHiltViewModel",
             daggerHiltViewModelCompiler    : "androidx.hilt:hilt-compiler:$daggerHiltViewModel",
+            firebaseCore                   : "com.google.firebase:firebase-core:$firebaseCore",
+            firebaseRealtimeDatabase       : "com.google.firebase:firebase-database-ktx:$firebaseRealtimeDatabase",
+            firebaseStore                  : "com.google.firebase:firebase-firestore:$firebaseStore",
             fragmentKTX                    : "androidx.fragment:fragment-ktx:$fragmentKTX",
             jUnit                          : "junit:junit:$junit",
             kotlin                         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${ext.kotlinVersion}",

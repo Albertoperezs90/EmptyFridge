@@ -19,6 +19,10 @@ class ShoppingListActivity : BaseActivity<ActivityShoppingListBinding>(R.layout.
     override fun initialize(binding: ActivityShoppingListBinding) {
         binding.viewmodel = shoppingListViewModel
         binding.adapter = shoppingListAdapter
+        binding.tBar.menu?.findItem(R.id.userIdentify)?.setOnMenuItemClickListener {
+            shoppingListViewModel.removeItem()
+            return@setOnMenuItemClickListener true
+        }
         binding.executePendingBindings()
     }
 

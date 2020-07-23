@@ -81,6 +81,9 @@ dependencies {
     implementation libs.androidViewModel
     implementation libs.daggerHilt
     implementation libs.daggerHiltViewModel
+    implementation libs.firebaseCore
+    implementation libs.firebaseRealtimeDatabase
+    implementation libs.firebaseStore
     implementation libs.fragmentKTX
     implementation libs.kotlin
     implementation libs.livedata

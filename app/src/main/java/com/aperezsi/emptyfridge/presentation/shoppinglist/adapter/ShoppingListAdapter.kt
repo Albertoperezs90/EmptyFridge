@@ -5,14 +5,15 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.aperezsi.emptyfridge.R
+import com.aperezsi.emptyfridge.data.remote.implementation.Grocery
 import com.aperezsi.emptyfridge.databinding.ItemShoppingListBinding
 import com.aperezsi.emptyfridge.presentation.common.AdapterData
 
-class ShoppingListAdapter(private val deleteCallback: (index: Int) -> Unit) : RecyclerView.Adapter<ShoppingListAdapter.ViewHolder>(), AdapterData<String> {
+class ShoppingListAdapter(private val deleteCallback: (index: Int) -> Unit) : RecyclerView.Adapter<ShoppingListAdapter.ViewHolder>(), AdapterData<Grocery> {
 
-    private var shoppingList: List<String> = emptyList()
+    private var shoppingList: List<Grocery> = emptyList()
 
-    override fun swapData(data: List<String>) {
+    override fun swapData(data: List<Grocery>) {
         shoppingList = data
         notifyDataSetChanged()
     }
@@ -30,7 +31,7 @@ class ShoppingListAdapter(private val deleteCallback: (index: Int) -> Unit) : Re
     }
 
     inner class ViewHolder(private val binding: ItemShoppingListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(item: String) {
+        fun bind(item: Grocery) {
             binding.item = item
             binding.deleteIcon.setOnClickListener {
                 deleteCallback(adapterPosition)
