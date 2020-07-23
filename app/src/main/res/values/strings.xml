@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">EmptyFridge</string>
+
+    <string name="login">Ingresar</string>
+    <string name="shopping_list">Lista de la compra</string>
 </resources>

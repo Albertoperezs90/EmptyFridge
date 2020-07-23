@@ -2,6 +2,7 @@
     package="com.aperezsi.emptyfridge">
 
     <application
+        android:name=".EmptyFridgeApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -10,10 +11,11 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".EmptyActivity">
+        <activity android:name=".presentation.shoppinglist.view.ShoppingListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
