@@ -1,6 +1,5 @@
 package com.aperezsi.emptyfridge.data.remote.implementation
 
-import android.util.Log
 import com.aperezsi.emptyfridge.data.remote.ShoppingListRemoteDataSource
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -14,12 +13,11 @@ class ShoppingListRemoteDataSourceImpl @Inject constructor(private val firebaseF
 
     override fun getShoppingList(): Flow<List<Grocery>> = callbackFlow {
         val eventDocument = firebaseFirestore.collection("shoppingList")
-        val suscription = eventDocument.addSnapshotListener { value, error ->
+        val suscription = eventDocument.addSnapshotListener { value, _ ->
             val changes = value?.documents.orEmpty()
             val groceries = mutableListOf<Grocery>()
             changes.forEach {
                 val grocery = it.toObject(Grocery::class.java)
-                Log.d("grocery", grocery.toString())
                 if (grocery != null) groceries.add(grocery)
             }
             offer(groceries)

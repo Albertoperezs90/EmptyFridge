@@ -7,11 +7,13 @@ import androidx.lifecycle.viewModelScope
 import com.aperezsi.emptyfridge.domain.usecase.AddShoppingItem
 import com.aperezsi.emptyfridge.domain.usecase.GetShoppingList
 import com.aperezsi.emptyfridge.domain.usecase.RemoveShoppingItem
+import com.aperezsi.emptyfridge.presentation.common.Navigator
 
 class ShoppingListViewModel @ViewModelInject constructor(
     getShoppingList: GetShoppingList,
     private val addShoppingItem: AddShoppingItem,
-    private val removeShoppingItem: RemoveShoppingItem
+    private val removeShoppingItem: RemoveShoppingItem,
+    private val navigator: Navigator
 ) : ViewModel() {
 
     val shoppingList = getShoppingList.invoke().asLiveData(viewModelScope.coroutineContext)
@@ -22,7 +24,7 @@ class ShoppingListViewModel @ViewModelInject constructor(
     }
 
     fun addItem() {
-        addShoppingItem.invoke()
+        navigator.navigateToAddShoppingItem()
     }
 
     fun removeItem() {
