@@ -27,6 +27,7 @@ ext {
             daggerHilt                     : "com.google.dagger:hilt-android:$daggerHilt",
             daggerHiltCompiler             : "com.google.dagger:hilt-android-compiler:$daggerHilt",
             daggerHiltViewModel            : "androidx.hilt:hilt-lifecycle-viewmodel:$daggerHiltViewModel",
+            daggerHiltViewModelCompiler    : "androidx.hilt:hilt-compiler:$daggerHiltViewModel",
             fragmentKTX                    : "androidx.fragment:fragment-ktx:$fragmentKTX",
             jUnit                          : "junit:junit:$junit",
             kotlin                         : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${ext.kotlinVersion}",

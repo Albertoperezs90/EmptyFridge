@@ -7,9 +7,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aperezsi.emptyfridge.R
 import com.aperezsi.emptyfridge.databinding.ItemShoppingListBinding
 import com.aperezsi.emptyfridge.presentation.common.AdapterData
-import com.aperezsi.emptyfridge.presentation.common.AdapterItemDecorator
 
-class ShoppingListAdapter : RecyclerView.Adapter<ShoppingListAdapter.ViewHolder>(), AdapterData<String> {
+class ShoppingListAdapter(private val deleteCallback: (index: Int) -> Unit) : RecyclerView.Adapter<ShoppingListAdapter.ViewHolder>(), AdapterData<String> {
 
     private var shoppingList: List<String> = emptyList()
 
@@ -30,14 +29,12 @@ class ShoppingListAdapter : RecyclerView.Adapter<ShoppingListAdapter.ViewHolder>
         holder.bind(item)
     }
 
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView)
-        recyclerView.addItemDecoration(AdapterItemDecorator())
-    }
-
     inner class ViewHolder(private val binding: ItemShoppingListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: String) {
             binding.item = item
+            binding.deleteIcon.setOnClickListener {
+                deleteCallback(adapterPosition)
+            }
             binding.executePendingBindings()
         }
     }

@@ -88,6 +88,7 @@ dependencies {
     implementation libs.recyclerView
 
     kapt libs.daggerHiltCompiler
+    kapt libs.daggerHiltViewModelCompiler
 
     testImplementation libs.jUnit
     testImplementation libs.mockitoKotlin

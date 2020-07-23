@@ -12,7 +12,9 @@ import dagger.hilt.android.AndroidEntryPoint
 class ShoppingListActivity : BaseActivity<ActivityShoppingListBinding>(R.layout.activity_shopping_list) {
 
     private val shoppingListViewModel: ShoppingListViewModel by viewModels()
-    private val shoppingListAdapter = ShoppingListAdapter()
+    private val shoppingListAdapter: ShoppingListAdapter by lazy {
+        ShoppingListAdapter(shoppingListViewModel::deleteItem)
+    }
 
     override fun initialize(binding: ActivityShoppingListBinding) {
         binding.viewmodel = shoppingListViewModel
